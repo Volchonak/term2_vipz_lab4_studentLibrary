@@ -86,12 +86,16 @@ void MainWindow::on_box1_button_addNewProf_clicked()
     int numOfElemAfter=list.size();
     if(numOfElemAfter-numOfElemBefore)
     {
+        ui->lineEdit_search->setText("");
         sortType=Default;
         if(ExcellentType==yes)
         {
             on_box1_buttonShowExcellent_clicked();
         }
-        showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+        else
+        {
+            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+        }
     }
 }
 
@@ -123,6 +127,7 @@ void MainWindow::on_box1_button_addFile_clicked()
             ExcellentType=no;
             clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
         }
+        ui->lineEdit_search->setText("");
     }
 
 }
@@ -148,6 +153,7 @@ void MainWindow::on_box1_button_open_clicked()
     list.clear();
     sortType=Default;
     ExcellentType=no;
+    ui->lineEdit_search->setText("");
     QTextStream in(&fp);
     Student *tmp= new Student;
     tmp->readFromFile(list, in);
@@ -199,12 +205,17 @@ void MainWindow::on_box1_button_close_clicked()
 
     }
     clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
+    ui->lineEdit_search->setText("");
 
 }
 
 void MainWindow::on_box1_button_delete_clicked()
 {
     int deleteRow=ui->tableWidget->currentRow();
+    if(deleteRow>=list.size())
+    {
+        return;
+    }
     //int rows=ui->tableWidget->rowCount();
     int columns=ui->tableWidget->columnCount();
     bool checkForDelete=false;
@@ -217,8 +228,6 @@ void MainWindow::on_box1_button_delete_clicked()
             break;
         }
     }
-    ui->label->setText(ui->tableWidget->item(deleteRow,0)->text());
-
     if(checkForDelete)
     {
         if(ExcellentType==yes)
@@ -227,13 +236,16 @@ void MainWindow::on_box1_button_delete_clicked()
             int numOfElem=list.size();
             for(int i=0; i<numOfElem;++i)
             {
-                if(list.at(i).isExcellentStudent())
+                if(list.at(i).getLastName().toUpper().contains(ui->lineEdit_search->text().toUpper()))
                 {
-                    ++currentExcellentItem;
-                    if(currentExcellentItem==deleteRow)
+                    if(list.at(i).isExcellentStudent())
                     {
-                        deleteRow=i;
-                        break;
+                        ++currentExcellentItem;
+                        if(currentExcellentItem==deleteRow)
+                        {
+                            deleteRow=i;
+                            break;
+                        }
                     }
                 }
             }
@@ -254,13 +266,17 @@ void MainWindow::on_box1_buttonShowExcellent_clicked()
     if(ExcellentType==no)
     {
         ExcellentType=yes;
+        QString textCheck=ui->lineEdit_search->text().toLower();
         QList<Student> excellent;
         int numOfElem=list.size();
         for(int i=0; i<numOfElem;++i)
         {
             if(list.at(i).isExcellentStudent())
             {
-                excellent.append(list.at(i));
+                if(list.at(i).getLastName().toLower().contains(textCheck))
+                {
+                    excellent.append(list.at(i));
+                }
             }
         }
         showDataAtTableWidget(*(ui->tableWidget),excellent,QColor(222,222,222));
@@ -268,8 +284,10 @@ void MainWindow::on_box1_buttonShowExcellent_clicked()
     else
     {
         ExcellentType=no;
-        clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-        showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+        on_lineEdit_search_textChanged(ui->lineEdit_search->text());
+
+        //clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
+        //showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
     }
 
 }
@@ -284,40 +302,35 @@ void MainWindow::on_box1_button_sort_clicked()
         {
             sortType=ByNameLess;
             std::sort(list.begin(),list.end(),compareLastName_Less);
-            clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+            on_lineEdit_search_textChanged(ui->lineEdit_search->text());
             break;
         }
         if(sortType==ByNameLess)
         {
             sortType=ByNameBigger;
             std::sort(list.begin(),list.end(),compareLastName_Bigger);
-            clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+            on_lineEdit_search_textChanged(ui->lineEdit_search->text());
             break;
         }
         if(sortType==ByNameBigger)
         {
             sortType=ByAverageBigger;
             std::sort(list.begin(),list.end(),compareAverage_Bigger);
-            clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+            on_lineEdit_search_textChanged(ui->lineEdit_search->text());
             break;
         }
         if(sortType==ByAverageBigger)
         {
             sortType=ByAverageLess;
             std::sort(list.begin(),list.end(),compareAverage_Less);
-            clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+            on_lineEdit_search_textChanged(ui->lineEdit_search->text());
             break;
         }
         if(sortType==ByAverageLess)
         {
             sortType=ByNameLess;
             std::sort(list.begin(),list.end(),compareLastName_Less);
-            clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-            showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
+            on_lineEdit_search_textChanged(ui->lineEdit_search->text());
             break;
         }
     }
@@ -413,5 +426,29 @@ void MainWindow::clearTableWidget(QTableWidget &table,const QBrush &brush)
 }
 void MainWindow::on_lineEdit_search_textChanged(const QString &arg1)
 {
+    static int i=0;
+    qInfo()<<i;
+    ++i;
+    int numOfElem=list.size();
+    QList<Student> tmp;
+    for(int i=0; i<numOfElem;++i)
+    {
+        if(list.at(i).getLastName().toUpper().contains(arg1.toUpper()))
+        {
+            if(ExcellentType==yes)
+            {
+                if(list.at(i).isExcellentStudent())
+                {
 
+                    tmp.append(list.at(i));
+                }
+            }
+            else
+            {
+                tmp.append(list.at(i));
+            }
+        }
+    }
+    clearTableWidget(*(ui->tableWidget), QColor(222,222,222));
+    showDataAtTableWidget(*(ui->tableWidget), tmp,QColor(222,222,222));
 }
