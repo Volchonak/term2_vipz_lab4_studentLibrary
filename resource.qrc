@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>photo/add_profile.png</file>
+        <file>photo/close.png</file>
+        <file>photo/excellent.png</file>
+        <file>photo/open.png</file>
+        <file>photo/save.png</file>
+        <file>photo/sort.png</file>
+        <file>photo/add_new_file.png</file>
+        <file>photo/search.png</file>
+        <file>photo/close_file.png</file>
+        <file>photo/delete.png</file>
+    </qresource>
+</RCC>

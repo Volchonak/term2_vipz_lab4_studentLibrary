@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addNewProfile</class>
+ <widget class="QDialog" name="addNewProfile">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>434</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Додавання студента</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+	background:white;
+}</string>
+  </property>
+  <widget class="QPushButton" name="button_saveAndAddProfile">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>370</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204,204,204);
+	border-radius:6px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+image:url(:/photo/save.png);
+image-position:left;
+}
+
+QPushButton:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}
+QPushButton:pressed
+{
+	background: rgb(197, 197, 197);
+}</string>
+   </property>
+   <property name="text">
+    <string>Зберегти</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>351</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_lastName">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}
+</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_firstName">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_1">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_4">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_5">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_6">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_7">
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color:white;
+	margin-right:3%;
+	margin-top:5px;
+	border-width:1px;
+	border-style:solid;
+	border-color:rgb(204, 204, 204);
+	border-radius:10px;
+	padding: 5px 9px;
+	font: italic 12pt &quot;Times New Roman&quot;;
+	color:rgb(64, 65, 66);
+}
+
+QLineEdit:hover {
+		border-bottom: 3px solid rgb(204, 204, 204);
+}</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
