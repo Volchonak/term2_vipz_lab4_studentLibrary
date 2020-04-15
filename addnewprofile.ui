@@ -38,7 +38,7 @@
 	border-color:rgb(204,204,204);
 	border-radius:6px;
 	padding: 5px 9px;
-	font: italic 12pt &quot;Times New Roman&quot;;
+	font: 12pt &quot;Times New Roman&quot;;
 	color:rgb(64, 65, 66);
 image:url(:/photo/save.png);
 image-position:left;
