@@ -45,7 +45,6 @@ MainWindow::MainWindow(QWidget *parent)
     {
         ui->tableWidget->setColumnWidth(i,73);
     }
-    //setRowBackground(QColor(250,0,0),ui->tablewidget->model(),row);
     for(int i=1; i<rows;i+=2)
     {
         setRowBackground(QColor(222,222,222),ui->tableWidget->model(),i);
@@ -285,9 +284,6 @@ void MainWindow::on_box1_buttonShowExcellent_clicked()
     {
         ExcellentType=no;
         on_lineEdit_search_textChanged(ui->lineEdit_search->text());
-
-        //clearTableWidget(*(ui->tableWidget),QColor(222,222,222));
-        //showDataAtTableWidget(*(ui->tableWidget),list,QColor(222,222,222));
     }
 
 }
